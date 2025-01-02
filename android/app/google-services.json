@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "748233791562",
+    "project_id": "flutter-instagram-clone-4748b",
+    "storage_bucket": "flutter-instagram-clone-4748b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748233791562:android:f7f6862cb8cb170d3aaeb3",
+        "android_client_info": {
+          "package_name": "com.dnguyen.flutterInstagramClone.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748233791562-det5oslujrkve9tb499bpo3tf07mjphs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dnguyen.flutterInstagramClone.dev",
+            "certificate_hash": "e6749d430f7bf1f8a6fed2dc2b26efc88700beb9"
+          }
+        },
+        {
+          "client_id": "748233791562-fc37ech08i0bffsptkl9vl08o41j76uk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dnguyen.flutterInstagramClone.dev",
+            "certificate_hash": "17fd90b9085af00f85665523a75fc71a6dfdd1dd"
+          }
+        },
+        {
+          "client_id": "748233791562-a3g7ie5ekj4qsqqkrbfbhr6hkuu3v5bf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1nYpO6N86lGC8UhC1ii0rAKPJgxrG2Fw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748233791562-a3g7ie5ekj4qsqqkrbfbhr6hkuu3v5bf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "748233791562-0oetl8frohupnfd6hkcc2i9hqdap87pm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dnguyen.flutterInstagramClone.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
