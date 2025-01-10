@@ -1,0 +1,21 @@
+name: user_repository
+description: A starting point for Dart libraries or applications.
+version: 1.0.0
+publish_to: none
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  authentication_client:
+    path: ../authentication_client/authentication_client
+  powersync_repository:
+    path: ../powersync_repository
+  rxdart: ^0.28.0
+  shared:
+    path: ../shared
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.4

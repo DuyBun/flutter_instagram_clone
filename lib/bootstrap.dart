@@ -4,13 +4,14 @@ import 'dart:developer';
 import 'package:app_ui/app_ui.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_instagram_clone/app/app.dart';
 import 'package:powersync_repository/powersync_repository.dart';
 import 'package:shared/shared.dart';
 
-typedef AppBuilder = FutureOr<Widget> Function();
+typedef AppBuilder = FutureOr<Widget> Function(
+  PowerSyncRepository,
+);
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -28,7 +29,8 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(AppBuilder builder, {
+Future<void> bootstrap(
+  AppBuilder builder, {
   required AppFlavor appFlavor,
   required FirebaseOptions options,
 }) async {
@@ -50,11 +52,8 @@ Future<void> bootstrap(AppBuilder builder, {
 
     SystemUiOverlayTheme.setPortraitOrientation();
 
-    runApp(await builder());
-  },
-      (error, stack) {
-        logE(error.toString(), stackTrace: stack);
-      });
-
-
+    runApp(await builder(powerSyncRepository));
+  }, (error, stack) {
+    logE(error.toString(), stackTrace: stack);
+  });
 }

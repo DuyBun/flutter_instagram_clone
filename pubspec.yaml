@@ -14,20 +14,32 @@ dependencies:
   bloc: ^8.1.4
   env:
     path: packages/env
+  form_fields:
+    path: packages/form_fields
+  instagram_blocks_ui:
+    path: packages/instagram_blocks_ui
   powersync_repository:
     path: packages/powersync_repository
   shared:
     path: packages/shared
+  supabase_authentication_client:
+    path: packages/authentication_client/supabase_authentication_client
+  token_storage:
+    path: packages/authentication_client/token_storage
+  user_repository:
+    path: packages/user_repository
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_localizations:
     sdk: flutter
-  intl: ^0.19.0
   firebase_core: ^3.8.1
   get_it: ^8.0.3
   google_sign_in: ^6.2.2
   supabase_flutter: ^2.8.2
+  equatable: ^2.0.7
+  animations: ^2.0.11
+  foundation: ^0.0.5
 dev_dependencies:
   bloc_test: ^9.1.7
   flutter_test:

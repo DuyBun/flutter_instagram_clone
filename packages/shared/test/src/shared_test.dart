@@ -4,7 +4,6 @@ import 'package:test/test.dart';
 
 void main() {
   group('Shared', () {
-    test('can be instantiated', () {
-    });
+    test('can be instantiated', () {});
   });
 }
