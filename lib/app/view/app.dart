@@ -15,7 +15,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
       value: userRepository,
-      child: const AppView(),
+      child: AppView(),
     );
   }
 }
