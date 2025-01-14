@@ -72,13 +72,14 @@ class SignUpState extends Equatable {
   List<Object?> get props =>
       [submissionStatus, email, fullName, userName, password, showPassword];
 
-  SignUpState copyWith(
-      {SignUpSubmissionStatus? submissionStatus,
-      Email? email,
-      FullName? fullName,
-      UserName? userName,
-      Password? password,
-      bool? showPassword}) {
+  SignUpState copyWith({
+    SignUpSubmissionStatus? submissionStatus,
+    Email? email,
+    FullName? fullName,
+    UserName? userName,
+    Password? password,
+    bool? showPassword,
+  }) {
     return SignUpState._(
       submissionStatus: submissionStatus ?? this.submissionStatus,
       email: email ?? this.email,
@@ -89,3 +90,14 @@ class SignUpState extends Equatable {
     );
   }
 }
+
+final signUpSubmissionStatusMessage =
+    <SignUpSubmissionStatus, SubmissionStatusMessage>{
+  SignUpSubmissionStatus.emailAlreadyRegistered: const SubmissionStatusMessage(
+    title: 'User with this email already exists.',
+    description: 'Try another email address',
+  ),
+  SignUpSubmissionStatus.error: const SubmissionStatusMessage.genericError(),
+  SignUpSubmissionStatus.networkError:
+      const SubmissionStatusMessage.networkError(),
+};

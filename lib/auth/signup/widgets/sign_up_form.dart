@@ -1,5 +1,8 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_instagram_clone/app/app.dart';
+import 'package:flutter_instagram_clone/auth/signup/sign_up.dart';
 import 'package:flutter_instagram_clone/auth/signup/widgets/sign_up_button.dart';
 import 'package:flutter_instagram_clone/auth/signup/widgets/widgets.dart';
 
@@ -8,19 +11,44 @@ class SignUpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        EmailFormField(),
-        SizedBox(height: AppSpacing.md,),
-        FullNameFormField(),
-        SizedBox(height: AppSpacing.md,),
-        UserNameFormField(),
-        SizedBox(height: AppSpacing.md,),
-        PasswordFormField(),
-        SizedBox(height: AppSpacing.xlg,),
-        SignUpButton(),
-      ],
+    return BlocListener<SignUpCubit, SignUpState>(
+      listener: (context, state) {
+        if (state.submissionStatus.isError) {
+          openSnackbar(
+            SnackbarMessage.error(
+              title:
+                  signUpSubmissionStatusMessage[state.submissionStatus]!.title,
+              description: signUpSubmissionStatusMessage[state.submissionStatus]
+                  ?.description,
+            ),
+            clearIfQueue: true,
+          );
+        }
+      },
+      listenWhen: (previous, current) =>
+          previous.submissionStatus != current.submissionStatus,
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          EmailFormField(),
+          SizedBox(
+            height: AppSpacing.md,
+          ),
+          FullNameFormField(),
+          SizedBox(
+            height: AppSpacing.md,
+          ),
+          UserNameFormField(),
+          SizedBox(
+            height: AppSpacing.md,
+          ),
+          PasswordFormField(),
+          SizedBox(
+            height: AppSpacing.xlg,
+          ),
+          SignUpButton(),
+        ],
+      ),
     );
   }
 }
