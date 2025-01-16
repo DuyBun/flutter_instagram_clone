@@ -9,24 +9,30 @@ import 'package:token_storage/token_storage.dart';
 import 'package:user_repository/user_repository.dart';
 
 void main() {
-  bootstrap((powerSyncRepository) {
-    final androidClientId = getIt<AppFlavor>().getEnv(EnumEnv.androidClientId);
-    final webClientId = getIt<AppFlavor>().getEnv(EnumEnv.webClientId);
+  bootstrap(
+    (powerSyncRepository) async {
+      final androidClientId =
+          getIt<AppFlavor>().getEnv(EnumEnv.androidClientId);
+      final webClientId = getIt<AppFlavor>().getEnv(EnumEnv.webClientId);
 
-    final googleSignIn = GoogleSignIn(
-      clientId: androidClientId,
-      serverClientId: webClientId,
-    );
-    final tokenStorage = InMemoryTokenStorage();
-    final supabaseAuthenticationClient = SupabaseAuthenticationClient(
-      powerSyncRepository: powerSyncRepository,
-      tokenStorage: tokenStorage,
-      googleSignIn: googleSignIn,
-    );
-    final userRepository =
-        UserRepository(authenticationClient: supabaseAuthenticationClient);
-    return App(userRepository: userRepository);
-  },
-      appFlavor: AppFlavor.development(),
-      options: DefaultFirebaseOptions.currentPlatform);
+      final googleSignIn = GoogleSignIn(
+        clientId: androidClientId,
+        serverClientId: webClientId,
+      );
+      final tokenStorage = InMemoryTokenStorage();
+      final supabaseAuthenticationClient = SupabaseAuthenticationClient(
+        powerSyncRepository: powerSyncRepository,
+        tokenStorage: tokenStorage,
+        googleSignIn: googleSignIn,
+      );
+      final userRepository =
+          UserRepository(authenticationClient: supabaseAuthenticationClient);
+      return App(
+        userRepository: userRepository,
+        user: await userRepository.user.first,
+      );
+    },
+    appFlavor: AppFlavor.development(),
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }

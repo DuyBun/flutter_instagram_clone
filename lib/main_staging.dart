@@ -9,7 +9,7 @@ import 'package:token_storage/token_storage.dart';
 import 'package:user_repository/user_repository.dart';
 
 void main() {
-  bootstrap((powerSyncRepository) {
+  bootstrap((powerSyncRepository) async {
     final androidClientId = getIt<AppFlavor>().getEnv(EnumEnv.androidClientId);
     final webClientId = getIt<AppFlavor>().getEnv(EnumEnv.webClientId);
 
@@ -24,10 +24,12 @@ void main() {
       googleSignIn: googleSignIn,
     );
     final userRepository =
-    UserRepository(authenticationClient: supabaseAuthenticationClient);
-    return App(userRepository: userRepository);
+        UserRepository(authenticationClient: supabaseAuthenticationClient);
+    return App(
+      userRepository: userRepository,
+      user: await userRepository.user.first,
+    );
   },
-    appFlavor: AppFlavor.staging(),
-    options: DefaultFirebaseOptions.currentPlatform
-  );
+      appFlavor: AppFlavor.staging(),
+      options: DefaultFirebaseOptions.currentPlatform);
 }

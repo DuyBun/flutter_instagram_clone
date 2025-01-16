@@ -1,7 +1,8 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_instagram_clone/app/app.dart';
-import 'package:flutter_instagram_clone/auth/auth.dart';
+import 'package:flutter_instagram_clone/app/routers/routers.dart';
 import 'package:flutter_instagram_clone/l10n/l10n.dart';
 
 class AppView extends StatelessWidget {
@@ -9,9 +10,8 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.customReversedAdaptiveColor(
-        light: AppColors.red, dark: AppColors.black);
-    return MaterialApp(
+    final routerConfig = router(context.read<AppBloc>());
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       theme: const AppTheme().theme,
@@ -28,7 +28,7 @@ class AppView extends StatelessWidget {
           ],
         );
       },
-      home: const AuthPage(),
+      routerConfig: routerConfig,
     );
   }
 }
